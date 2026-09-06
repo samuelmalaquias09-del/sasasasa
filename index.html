@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Motors | Showroom Digital Exclusivo</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              400: '#FACC15',
+              500: '#EAB308',
+              600: '#CA8A04',
+              accent: '#D4AF37'
+            },
+            dark: {
+              base: '#0A0A0B',
+              card: '#121215',
+              glass: 'rgba(18, 18, 21, 0.75)',
+              border: '#27272A'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-effect {
+      background: rgba(18, 18, 21, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF 0%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-border-glow {
+      box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.25);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-dark-base text-zinc-100 font-sans selection:bg-gold-accent selection:text-black antialiased">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+      
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full border border-gold-accent/40 flex items-center justify-center bg-black/50 group-hover:border-gold-accent transition-colors duration-300">
+          <i data-lucide="crown" class="w-5 h-5 text-gold-accent"></i>
+        </div>
+        <span class="font-serif text-2xl tracking-widest uppercase font-bold text-white">AURA<span class="text-gold-accent">.</span></span>
+      </a>
+
+      <div class="relative flex-1 max-w-md hidden md:block">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="Buscar Porsche, SUV, 2024..." 
+            class="w-full bg-zinc-900/90 text-sm text-zinc-200 placeholder-zinc-500 rounded-full py-2.5 pl-11 pr-4 border border-zinc-800 focus:outline-none focus:border-gold-accent/60 transition-all"
+            autocomplete="off"
+          >
+          <i data-lucide="search" class="w-4 h-4 text-zinc-500 absolute left-4 top-3.5"></i>
+        </div>
+        
+        <div id="search-results" class="hidden absolute left-0 right-0 top-full mt-2 glass-effect rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl z-50 max-h-96 overflow-y-auto"></div>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#catalogo" class="hidden lg:inline-block text-sm font-medium text-zinc-300 hover:text-gold-accent transition-colors">Coleção</a>
+        <a href="#diferenciais" class="hidden lg:inline-block text-sm font-medium text-zinc-300 hover:text-gold-accent transition-colors">Atendimento VIP</a>
+        <a href="#contato" class="px-5 py-2.5 rounded-full border border-gold-accent/40 text-gold-accent hover:bg-gold-accent hover:text-black text-sm font-medium transition-all duration-300">
+          Privé Concierge
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img id="hero-bg" src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=2000&q=80" alt="Supercar Showroom" class="w-full h-full object-cover object-center scale-105 transition-all duration-1000 opacity-40">
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-base via-dark-base/60 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-base via-transparent to-dark-base/80"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center md:text-left grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-effect border border-gold-accent/30 text-gold-accent text-xs tracking-widest uppercase font-semibold">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Showroom Digital Exclusivo
+        </div>
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white">
+          A Engenharia do <span class="gold-gradient-text block">Extraordinário</span>
+        </h1>
+        <p class="text-zinc-400 text-lg max-w-xl font-light leading-relaxed">
+          Curadoria rigorosa de hipercarros e utilitários de ultra luxo. Transações sigilosas e entregas personalizadas em todo o Brasil.
+        </p>
+        <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="#catalogo" class="px-8 py-4 rounded-full bg-gold-accent hover:bg-yellow-500 text-black font-semibold text-sm tracking-wide transition-all duration-300 shadow-lg shadow-gold-accent/20 flex items-center justify-center gap-2">
+            Explore Nosso Catálogo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#modal-360" onclick="openModal(1)" class="px-8 py-4 rounded-full glass-effect hover:bg-zinc-800/80 text-white font-medium text-sm border border-zinc-700 transition-all duration-300 flex items-center justify-center gap-2">
+            <i data-lucide="rotate-3d" class="w-4 h-4 text-gold-accent"></i> Experiência 360°
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="py-24 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-zinc-800/80 pb-8">
+      <div>
+        <p class="text-gold-accent text-xs tracking-widest uppercase font-semibold mb-2">Acervo Disponível</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Veículos em Destaque</h2>
+      </div>
+      
+      <div class="flex flex-wrap gap-2">
+        <button onclick="filterCars('todos')" class="filter-btn active px-4 py-2 rounded-full text-xs font-medium border border-zinc-800 bg-zinc-900 text-white hover:border-gold-accent transition-all">Todos</button>
+        <button onclick="filterCars('Esportivo')" class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-zinc-800 bg-dark-card text-zinc-400 hover:text-white hover:border-gold-accent transition-all">Esportivos</button>
+        <button onclick="filterCars('SUV')" class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-zinc-800 bg-dark-card text-zinc-400 hover:text-white hover:border-gold-accent transition-all">SUVs</button>
+        <button onclick="filterCars('Sedã')" class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-zinc-800 bg-dark-card text-zinc-400 hover:text-white hover:border-gold-accent transition-all">Sedãs</button>
+        <button onclick="filterCars('Elétrico')" class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-zinc-800 bg-dark-card text-zinc-400 hover:text-white hover:border-gold-accent transition-all">Elétricos</button>
+      </div>
+    </div>
+
+    <div id="cars-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </section>
+
+  <div id="car-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl overflow-y-auto">
+    <div class="max-w-7xl mx-auto px-6 py-12 min-h-screen flex flex-col justify-center relative">
+      
+      <button onclick="closeModal()" class="absolute top-8 right-6 text-zinc-400 hover:text-white bg-zinc-900/80 p-3 rounded-full border border-zinc-800 transition-colors z-50">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="relative bg-zinc-950 rounded-3xl p-6 border border-zinc-800/80 text-center select-none overflow-hidden group">
+            
+            <div class="absolute top-4 left-4 z-10 flex items-center gap-2 glass-effect px-3 py-1.5 rounded-full border border-gold-accent/40 text-gold-accent text-xs font-semibold">
+              <i data-lucide="gem" class="w-3.5 h-3.5"></i> Selo Exclusivo Aura
+            </div>
+
+            <div class="absolute top-4 right-4 z-10 text-xs text-zinc-400 glass-effect px-3 py-1.5 rounded-full border border-zinc-800 flex items-center gap-1.5">
+              <i data-lucide="move-horizontal" class="w-4 h-4 text-gold-accent animate-pulse"></i> Arraste para Girar (360°)
+            </div>
+
+            <div id="viewer-360" class="w-full h-[350px] sm:h-[450px] flex items-center justify-center cursor-grab active:cursor-grabbing relative">
+              <img id="image-360" src="" alt="360 view" class="max-h-full max-w-full object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+            </div>
+
+            <p class="text-xs text-zinc-500 mt-2">Simulação interativa em alta resolução</p>
+          </div>
+
+          <div id="modal-gallery" class="grid grid-cols-3 gap-4"></div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <span id="modal-brand" class="text-gold-accent text-sm font-semibold tracking-widest uppercase"></span>
+            <h2 id="modal-title" class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1"></h2>
+            <p id="modal-price" class="text-2xl font-semibold text-white mt-3 gold-gradient-text"></p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-800">
+            <div class="glass-effect p-4 rounded-2xl border border-zinc-800">
+              <span class="text-xs text-zinc-500 block">Potência</span>
+              <span id="spec-power" class="text-base font-semibold text-zinc-200"></span>
+            </div>
+            <div class="glass-effect p-4 rounded-2xl border border-zinc-800">
+              <span class="text-xs text-zinc-500 block">Motor</span>
+              <span id="spec-engine" class="text-base font-semibold text-zinc-200"></span>
+            </div>
+            <div class="glass-effect p-4 rounded-2xl border border-zinc-800">
+              <span class="text-xs text-zinc-500 block">Ano</span>
+              <span id="spec-year" class="text-base font-semibold text-zinc-200"></span>
+            </div>
+            <div class="glass-effect p-4 rounded-2xl border border-zinc-800">
+              <span class="text-xs text-zinc-500 block">Câmbio</span>
+              <span id="spec-trans" class="text-base font-semibold text-zinc-200"></span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold text-zinc-300 mb-2">Destaques do Veículo</h4>
+            <ul id="modal-features" class="text-xs text-zinc-400 space-y-1.5 list-disc list-inside"></ul>
+          </div>
+
+          <div class="pt-6 border-t border-zinc-800 space-y-3">
+            <a id="whatsapp-btn" href="#" target="_blank" class="w-full py-4 rounded-full bg-gold-accent hover:bg-yellow-500 text-black font-semibold text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-accent/20">
+              <i data-lucide="message-square" class="w-4 h-4"></i> Agendar Test-Drive VIP
+            </a>
+            <p class="text-[11px] text-zinc-500 text-center">Atendimento exclusivo via Concierge Privado.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // BASE DE DADOS DOS CARROS
+    const carsData = [
+      {
+        id: 1,
+        name: "911 GT3 RS",
+        brand: "Porsche",
+        year: 2024,
+        price: 2850000,
+        type: "Esportivo",
+        power: "525 cv",
+        engine: "4.0 Boxer 6 cil.",
+        trans: "PDK 7 marchas",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1611821064430-0d40291d0f0d?auto=format&fit=crop&w=1200&q=80"
+        ],
+        // Sequência para rotação 360
+        sequence360: [
+          "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1611821064430-0d40291d0f0d?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Pacote Weissach", "Freios de Cerâmica (PCCB)", "Eixo Traseiro Esterçável", "Sistema de Elevação de Eixo Dianteiro"]
+      },
+      {
+        id: 2,
+        name: "Urus Performante",
+        brand: "Lamborghini",
+        year: 2024,
+        price: 3900000,
+        type: "SUV",
+        power: "666 cv",
+        engine: "4.0 V8 Bi-Turbo",
+        trans: "Automático 8m",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80"
+        ],
+        sequence360: [
+          "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Capô em Fibra de Carbono", "Escapamento Akrapovič em Titânio", "Interiores em Alcantara Exclusiva"]
+      },
+      {
+        id: 3,
+        name: "Taycan Turbo S",
+        brand: "Porsche",
+        year: 2023,
+        price: 1150000,
+        type: "Elétrico",
+        power: "761 cv",
+        engine: "Elétrico Duplo",
+        trans: "Automático 2m",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80"
+        ],
+        sequence360: [
+          "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Bateria Performance Plus", "Teto Panorâmico em Vidro", "Som Burmester High-End 3D"]
+      },
+      {
+        id: 4,
+        name: "G 63 AMG",
+        brand: "Mercedes-Benz",
+        year: 2024,
+        price: 1980000,
+        type: "SUV",
+        power: "585 cv",
+        engine: "4.0 V8 Bi-Turbo",
+        trans: "AMG SPEEDSHIFT 9m",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=1200&q=80"
+        ],
+        sequence360: [
+          "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Pacote AMG Night", "Rodas 22'' Forjadas", "Faróis MULTIBEAM LED"]
+      },
+      {
+        id: 5,
+        name: "Roma Spider",
+        brand: "Ferrari",
+        year: 2024,
+        price: 3400000,
+        type: "Esportivo",
+        power: "620 cv",
+        engine: "3.9 V8 Bi-Turbo",
+        trans: "Dual Clutch 8m",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80"
+        ],
+        sequence360: [
+          "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Capota Retrátil em Tecido", "Display do Passageiro", "Volante em Carbono com LEDs"]
+      },
+      {
+        id: 6,
+        name: "RS7 Sportback",
+        brand: "Audi",
+        year: 2023,
+        price: 980000,
+        type: "Sedã",
+        power: "600 cv",
+        engine: "4.0 V8 Bi-Turbo",
+        trans: "Tiptronic 8m",
+        exclusive: true,
+        images: [
+          "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=80"
+        ],
+        sequence360: [
+          "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80"
+        ],
+        features: ["Eixo Traseiro Dinâmico", "Faróis Audi Laser Light", "Pacote Visual Carbono"]
+      }
+    ];
+
+    // FORMATAR MOEDA
+    const formatCurrency = (val) => {
+      return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
+    };
+
+    // RENDERIZAR CARD DO CARRO
+    function renderCards(list) {
+      const grid = document.getElementById('cars-grid');
+      grid.innerHTML = '';
+
+      list.forEach(car => {
+        const card = document.createElement('div');
+        card.className = "group glass-effect rounded-3xl overflow-hidden border border-zinc-800/80 hover:border-gold-accent/50 transition-all duration-500 flex flex-col hover:-translate-y-1 gold-border-glow";
+        
+        card.innerHTML = `
+          <div class="relative h-64 overflow-hidden bg-zinc-950">
+            ${car.exclusive ? `
+              <div class="absolute top-4 left-4 z-10 bg-black/80 backdrop-blur-md border border-gold-accent/50 text-gold-accent text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full flex items-center gap-1">
+                <i data-lucide="crown" class="w-3 h-3"></i> Exclusivo
+              </div>
+            ` : ''}
+            <img src="${car.images[0]}" alt="${car.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent"></div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-xs text-gold-accent font-semibold tracking-wider uppercase">${car.brand}</span>
+              <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-accent transition-colors">${car.name}</h3>
+              <p class="text-xs text-zinc-400 mt-1">${car.year} • ${car.power} • ${car.type}</p>
+            </div>
+
+            <div class="pt-4 border-t border-zinc-800/80 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-zinc-500 uppercase block">Valor sob consulta</span>
+                <span class="text-xl font-bold text-white">${formatCurrency(car.price)}</span>
+              </div>
+              <button onclick="openModal(${car.id})" class="p-3 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-300 group-hover:bg-gold-accent group-hover:text-black group-hover:border-gold-accent transition-all">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    // FILTRAR CARROS
+    function filterCars(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-zinc-900', 'text-white', 'border-gold-accent');
+        btn.classList.add('bg-dark-card', 'text-zinc-400');
+      });
+      event.target.classList.add('bg-zinc-900', 'text-white', 'border-gold-accent');
+
+      if (category === 'todos') {
+        renderCards(carsData);
+      } else {
+        const filtered = carsData.filter(c => c.type === category);
+        renderCards(filtered);
+      }
+    }
+
+    // BUSCA INTELIGENTE (FUSE.JS)
+    const fuse = new Fuse(carsData, {
+      keys: ['name', 'brand', 'year', 'type'],
+      threshold: 0.3
+    });
+
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      if (!query) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+
+      const results = fuse.search(query);
+      if (results.length > 0) {
+        searchResults.innerHTML = '';
+        results.forEach(({ item }) => {
+          const div = document.createElement('div');
+          div.className = "p-3 hover:bg-zinc-800/80 cursor-pointer flex items-center gap-3 border-b border-zinc-800/50 last:border-none transition-colors";
+          div.onclick = () => {
+            openModal(item.id);
+            searchResults.classList.add('hidden');
+            searchInput.value = '';
+          };
+          div.innerHTML = `
+            <img src="${item.images[0]}" class="w-12 h-12 object-cover rounded-lg border border-zinc-700">
+            <div>
+              <div class="text-sm font-semibold text-white">${item.brand} ${item.name}</div>
+              <div class="text-xs text-zinc-400">${item.year} • ${formatCurrency(item.price)}</div>
+            </div>
+          `;
+          searchResults.appendChild(div);
+        });
+        searchResults.classList.remove('hidden');
+      } else {
+        searchResults.innerHTML = `<div class="p-4 text-xs text-zinc-500 text-center">Nenhum veículo encontrado.</div>`;
+        searchResults.classList.remove('hidden');
+      }
+    });
+
+    // SISTEMA SHOWROOM 360 INTERATIVO (DRAG TO ROTATE)
+    let currentCar = null;
+    let currentFrame = 0;
+    let isDragging = false;
+    let startX = 0;
+
+    function openModal(id) {
+      currentCar = carsData.find(c => c.id === id);
+      if (!currentCar) return;
+
+      document.getElementById('modal-brand').innerText = currentCar.brand;
+      document.getElementById('modal-title').innerText = currentCar.name;
+      document.getElementById('modal-price').innerText = formatCurrency(currentCar.price);
+      document.getElementById('spec-power').innerText = currentCar.power;
+      document.getElementById('spec-engine').innerText = currentCar.engine;
+      document.getElementById('spec-year').innerText = currentCar.year;
+      document.getElementById('spec-trans').innerText = currentCar.trans;
+
+      // Renderizar Opcionais
+      const featList = document.getElementById('modal-features');
+      featList.innerHTML = '';
+      currentCar.features.forEach(f => {
+        const li = document.createElement('li');
+        li.innerText = f;
+        featList.appendChild(li);
+      });
+
+      // Configurar Imagem 360 Inicial
+      currentFrame = 0;
+      update360Image();
+
+      // Galeria de Fotos
+      const gallery = document.getElementById('modal-gallery');
+      gallery.innerHTML = '';
+      currentCar.images.forEach(img => {
+        const thumb = document.createElement('img');
+        thumb.src = img;
+        thumb.className = "h-20 w-full object-cover rounded-xl border border-zinc-800 cursor-pointer hover:border-gold-accent transition-colors";
+        gallery.appendChild(thumb);
+      });
+
+      // WhatsApp Link
+      const msg = encodeURIComponent(`Olá, gostaria de mais informações sobre o ${currentCar.brand} ${currentCar.name} (${currentCar.year}).`);
+      document.getElementById('whatsapp-btn').href = `https://wa.me/5511999999999?text=${msg}`;
+
+      document.getElementById('car-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('car-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function update360Image() {
+      const imgElem = document.getElementById('image-360');
+      if (currentCar && currentCar.sequence360.length > 0) {
+        imgElem.src = currentCar.sequence360[currentFrame];
+      }
+    }
+
+    // Eventos de Arrasto para o Efeito 360
+    const viewer = document.getElementById('viewer-360');
+
+    viewer.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging || !currentCar) return;
+      const deltaX = e.clientX - startX;
+
+      if (Math.abs(deltaX) > 20) { // Sensibilidade da rotação
+        if (deltaX > 0) {
+          currentFrame = (currentFrame + 1) % currentCar.sequence360.length;
+        } else {
+          currentFrame = (currentFrame - 1 + currentCar.sequence360.length) % currentCar.sequence360.length;
+        }
+        update360Image();
+        startX = e.clientX;
+      }
+    });
+
+    // INICIALIZAÇÃO
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCards(carsData);
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
